@@ -32,6 +32,11 @@ public class User {
     @Enumerated(EnumType.STRING)
     private RoleEnum role;
 
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @PrimaryKeyJoinColumn(name = "room_id")
+    private Room room;
+
     public User() {
     }
 
@@ -105,5 +110,13 @@ public class User {
 
     public void setRole(RoleEnum role) {
         this.role = role;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
     }
 }

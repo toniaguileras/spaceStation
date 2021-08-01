@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import toni.aguilera.spaceStation.model.dto.UserDTO;
 import toni.aguilera.spaceStation.repository.UserRepository;
+import toni.aguilera.spaceStation.util.RoleEnum;
 import toni.aguilera.spaceStation.util.mapper.UserMapper;
 
 import java.util.List;
@@ -20,5 +21,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserDTO> getUsers() {
         return UserMapper.map(userRepository.findAll());
+    }
+
+    @Override
+    public List<UserDTO> getUsersByRole(RoleEnum roleEnum) {
+        return UserMapper.map(userRepository.findByRole(roleEnum));
     }
 }

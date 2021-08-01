@@ -1,10 +1,9 @@
 package toni.aguilera.spaceStation.model;
 
+import org.hibernate.annotations.Type;
 import toni.aguilera.spaceStation.util.RoleEnum;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
@@ -12,20 +11,22 @@ import java.util.UUID;
 public class Room {
 
     @Id
+    @Type(type = "uuid-char")
     private UUID id;
+
     private String name;
+
+    @Enumerated(EnumType.STRING)
     private RoleEnum role;
-    private Integer people;
 
 
     public Room() {
     }
 
-    public Room(UUID id, String name, RoleEnum role, Integer people) {
+    public Room(UUID id, String name, RoleEnum role) {
         this.id = id;
         this.name = name;
         this.role = role;
-        this.people = people;
     }
 
     public UUID getId() {
@@ -52,11 +53,4 @@ public class Room {
         this.role = role;
     }
 
-    public Integer getPeople() {
-        return people;
-    }
-
-    public void setPeople(Integer people) {
-        this.people = people;
-    }
 }
