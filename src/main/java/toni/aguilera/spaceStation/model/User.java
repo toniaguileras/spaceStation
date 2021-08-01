@@ -1,7 +1,7 @@
 package toni.aguilera.spaceStation.model;
 
 import org.hibernate.annotations.Type;
-import org.hibernate.type.UUIDCharType;
+import toni.aguilera.spaceStation.util.RoleEnum;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -12,6 +12,7 @@ import java.util.UUID;
 public class User {
 
     @Id
+    @Type(type = "uuid-char")
     private UUID id;
 
     private Timestamp createdOn;
@@ -27,6 +28,9 @@ public class User {
     private String surname;
 
     private String username;
+
+    @Enumerated(EnumType.STRING)
+    private RoleEnum role;
 
     public User() {
     }
@@ -93,5 +97,13 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public RoleEnum getRole() {
+        return role;
+    }
+
+    public void setRole(RoleEnum role) {
+        this.role = role;
     }
 }
