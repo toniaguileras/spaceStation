@@ -35,6 +35,7 @@ public class User {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @PrimaryKeyJoinColumn(name = "room_id")
+    @Type(type = "uuid-char")
     private Room room;
 
     public User() {
