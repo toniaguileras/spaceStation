@@ -27,4 +27,5 @@ public class RoomController {
     public ResponseEntity<?> goToRoom(@RequestParam UUID roomId, @RequestParam UUID userId){
         return ResponseEntity.ok(roomService.goToRoom(roomId, userId));
     }
+
 }
