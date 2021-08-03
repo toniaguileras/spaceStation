@@ -32,9 +32,9 @@ public class RoomServiceImpl implements RoomService {
     }
 
     /**
-     * Devuelve los usuarios que hay en cada habitación
+     * Search and group users in each room
      *
-     * @return listado de usuarios por habitación
+     * @return list of users in each room
      */
     @Override
     public List<UserRoomDTO> getUsersInRooms() {
@@ -45,11 +45,11 @@ public class RoomServiceImpl implements RoomService {
     }
 
     /**
-     * Hace que el usuario que se pasa, esté en la habitación indicada
+     * Changes the room where user is at this moment
      *
-     * @param roomId id de la habitacion a la que va a ir
-     * @param userId id del usuario que va a ir a la habitacion
-     * @return UserRoomDTO con la habitacion en la que está el usuario
+     * @param roomId room where it's mean to go
+     * @param userId user meant to go
+     * @return UserRoomDTO with the actual room of the user
      */
     @Override
     public UserRoomDTO goToRoom(UUID roomId, UUID userId) {
@@ -65,11 +65,11 @@ public class RoomServiceImpl implements RoomService {
     }
 
     /**
-     * Crea el dto que se devuelve en el metodo goToRoom
+     * Creates the dto from user and room entity
      *
-     * @param user usuario que se devuelve
-     * @param room habitacion a la que va el usuario
-     * @return el dto con el usuario y la habitacion a la que va
+     * @param user to return
+     * @param room where's user
+     * @return dto with user and room
      */
     private UserRoomDTO createUserRoomDTO(User user, Room room) {
         UserRoomDTO userRoomDTO = new UserRoomDTO();
@@ -82,10 +82,10 @@ public class RoomServiceImpl implements RoomService {
     }
 
     /**
-     * Busca el usuario por id
+     * Searches user in database
      *
-     * @param userId usuario a buscar
-     * @return el usuario si existe, exception si no existe
+     * @param userId to search
+     * @return user if exists, exception if not
      */
     private User getUserIfExist(UUID userId) {
         Optional<User> user = userRepository.findById(userId);
@@ -96,10 +96,10 @@ public class RoomServiceImpl implements RoomService {
     }
 
     /**
-     * Busca la habitacion por id
+     * Searches room by id
      *
-     * @param roomId id de la habitacion
-     * @return la habitacion, exception si no existe
+     * @param roomId to search
+     * @return room if exist
      */
     private Room getRoomIfExist(UUID roomId) {
         Optional<Room> room = roomRepository.findById(roomId);
@@ -110,10 +110,10 @@ public class RoomServiceImpl implements RoomService {
     }
 
     /**
-     * Devuelve los usuarios que hay en la habitacion
+     * Returns user in a room
      *
-     * @param room habitacion en la que se buscan los usuarios
-     * @return el dto con los usuarios por habitacion
+     * @param room meant to search users in
+     * @return dto with room and users in
      */
     private UserRoomDTO groupUsersByRoom(Room room) {
         UserRoomDTO userRoomDTO = new UserRoomDTO();

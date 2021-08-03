@@ -18,7 +18,7 @@ public class RoomController {
         this.roomService = roomService;
     }
 
-    @GetMapping()
+    @GetMapping("/user")
     public ResponseEntity<?> getUsersInRooms(){
         return ResponseEntity.ok(roomService.getUsersInRooms());
     }
